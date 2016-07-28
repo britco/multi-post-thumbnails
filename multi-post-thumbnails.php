@@ -129,9 +129,10 @@ if (!class_exists('MultiPostThumbnails')) {
 		 */
 		public function thumbnail_meta_box() {
 			global $post;
-			
+			do_action( 'mpt_before_metabox_content_' . $this->get_meta_key(), $this->get_meta_key() );
 			$thumbnail_id = get_post_meta($post->ID, $this->get_meta_key(), true);
 			echo $this->post_thumbnail_html($thumbnail_id);
+			do_action( 'mpt_after_metabox_content_' . $this->get_meta_key(), $this->get_meta_key() );
 		}
 
 		/**
